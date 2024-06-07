@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(cors());
 dotenv.config({ path: "./config/.env" });
 
+app.get("/", (req, res) => {
+  res.send("Website works Perfectly");
+});
+
 app.use("/bestcrm", Router);
 
 const PORT = process.env.PORT || 3000;
