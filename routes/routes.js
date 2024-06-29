@@ -9,6 +9,13 @@ import {
   updateContact,
   deleteContact,
 } from "../controller/contactController.js";
+import {
+  createOffer,
+  getOffer,
+  getOffers,
+  updateOffer,
+  deleteOffer,
+} from "../controller/OfferController.js";
 const router = express.Router();
 
 // user routes
@@ -59,5 +66,12 @@ router.get("/displaycontacts", VerifyUser, getContacts);
 router.get("/displaycontacts/:id", VerifyUser, getContact);
 router.put("/update-contact/:id", VerifyUser, updateContact);
 router.delete("/displaycontacts/:id", VerifyUser, deleteContact);
+
+// dressOffer routes
+router.post("/offers", VerifyUser, createOffer);
+router.get("/displayoffers", VerifyUser, getOffers);
+router.get("/displayoffers/:id", VerifyUser, getOffer);
+router.put("/update-offer/:id", VerifyUser, updateOffer);
+router.delete("/displayoffers/:id", VerifyUser, deleteOffer);
 
 export { router as Router };
