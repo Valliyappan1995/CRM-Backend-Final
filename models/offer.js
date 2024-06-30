@@ -23,5 +23,5 @@ const OfferSchema = new mongoose.Schema({
   },
 });
 
-const OfferModel = mongoose.model("Offer", OfferSchema);
+const OfferModel = mongoose.model("offers", OfferSchema);
 export { OfferModel };

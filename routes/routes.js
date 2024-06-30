@@ -10,12 +10,26 @@ import {
   deleteContact,
 } from "../controller/contactController.js";
 import {
-  createOffer,
-  getOffer,
-  getOffers,
-  updateOffer,
-  deleteOffer,
-} from "../controller/OfferController.js";
+  createInteraction,
+  getInteractions,
+  getInteraction,
+  updateInteraction,
+  deleteInteraction,
+} from "../controller/interactionController.js";
+import {
+  createLead,
+  getLeads,
+  getLead,
+  updateLead,
+  deleteLead,
+} from "../controller/leadController.js";
+import {
+  createTask,
+  getTasks,
+  getTask,
+  updateTask,
+  deleteTask,
+} from "../controller/taskController.js";
 const router = express.Router();
 
 // user routes
@@ -67,11 +81,25 @@ router.get("/displaycontacts/:id", VerifyUser, getContact);
 router.put("/update-contact/:id", VerifyUser, updateContact);
 router.delete("/displaycontacts/:id", VerifyUser, deleteContact);
 
-// dressOffer routes
-router.post("/offers", VerifyUser, createOffer);
-router.get("/displayoffers", VerifyUser, getOffers);
-router.get("/displayoffers/:id", VerifyUser, getOffer);
-router.put("/update-offer/:id", VerifyUser, updateOffer);
-router.delete("/displayoffers/:id", VerifyUser, deleteOffer);
+//interaction routes
+router.post("/interactions", VerifyUser, createInteraction);
+router.get("/interactions", VerifyUser, getInteractions);
+router.get("/interactions/:id", VerifyUser, getInteraction);
+router.put("/interactions/:id", VerifyUser, updateInteraction);
+router.delete("/interactions/:id", VerifyUser, deleteInteraction);
+
+// Lead routes
+router.post("/leads", VerifyUser, createLead);
+router.get("/leads", VerifyUser, getLeads);
+router.get("/leads/:id", VerifyUser, getLead);
+router.put("/leads/:id", VerifyUser, updateLead);
+router.delete("/leads/:id", VerifyUser, deleteLead);
+
+// Task routes
+router.post("/tasks", VerifyUser, createTask);
+router.get("/tasks", VerifyUser, getTasks);
+router.get("/tasks/:id", VerifyUser, getTask);
+router.put("/tasks/:id", VerifyUser, updateTask);
+router.delete("/tasks/:id", VerifyUser, deleteTask);
 
 export { router as Router };

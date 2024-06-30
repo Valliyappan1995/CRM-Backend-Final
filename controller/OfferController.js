@@ -78,8 +78,8 @@ const deleteOffer = async (req, res) => {
       return res.status(401).json({ error: "No Record Existed" });
     }
     const deleteRecord = await OfferModel.findByIdAndDelete({ _id: id });
-    const displayOffers = await OfferModel.find({ postedBy: req.user._id });
-    return res.status(200).json({ success: true, ...displayOffers._doc });
+    // const displayOffers = await OfferModel.find({ postedBy: req.user._id });
+    return res.status(200).json({ success: true, ...displayOffer._doc });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
