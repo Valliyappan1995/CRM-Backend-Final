@@ -8,14 +8,14 @@ import {
   getContact,
   updateContact,
   deleteContact,
-} from "../controller/contactController.js";
+} from "./controllers/contactController.js";
 import {
   createProduct,
   getProducts,
   getProduct,
   updateProduct,
   deleteProduct,
-} from "../controller/productController.js";
+} from "./controllers/productController.js";
 
 const router = express.Router();
 
@@ -69,43 +69,11 @@ router.put("/update-contact/:id", VerifyUser, updateContact);
 router.delete("/displaycontacts/:id", VerifyUser, deleteContact);
 
 // product routes
-// Create a new product
-router.post(
-  "/bestcrm/products",
-  VerifyUser,
-  [
-    body("name").notEmpty().withMessage("Product name is required"),
-    body("description")
-      .notEmpty()
-      .withMessage("Product description is required"),
-    body("price").notEmpty().withMessage("Product price is required"),
-    body("quantity").notEmpty().withMessage("Product quantity is required"),
-  ],
-  createProduct
-);
-
-// Get all products
-router.get("/bestcrm/products", VerifyUser, getProducts);
-
-// Get a product by ID
-router.get("/bestcrm/products/:id", VerifyUser, getProduct);
-
-// Update a product
-router.put(
-  "/bestcrm/update-product/:id",
-  VerifyUser,
-  [
-    body("name").notEmpty().withMessage("Product name is required"),
-    body("description")
-      .notEmpty()
-      .withMessage("Product description is required"),
-    body("price").notEmpty().withMessage("Product price is required"),
-    body("quantity").notEmpty().withMessage("Product quantity is required"),
-  ],
-  updateProduct
-);
-
-// Delete a product
-router.delete("/bestcrm/delete-product/:id", VerifyUser, deleteProduct);
+router.post("/products", VerifyUser, createProduct);
+router.get("/displayproducts", VerifyUser, getProducts);
+router.get("/displayproducts/:id", VerifyUser, getProduct);
+router.put("/update-products/:id", VerifyUser, updateProduct);
+router.delete("/displayproducts/:id", VerifyUser, deleteProduct);
 
 export { router as Router };
+
