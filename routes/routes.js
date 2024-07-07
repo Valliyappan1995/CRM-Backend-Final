@@ -8,14 +8,21 @@ import {
   getContact,
   updateContact,
   deleteContact,
-} from "./controllers/contactController.js";
+} from "../controller/contactController.js";
 import {
-  createProduct,
-  getProducts,
-  getProduct,
-  updateProduct,
-  deleteProduct,
-} from "./controllers/productController.js";
+  createLead,
+  getLeads,
+  getLead,
+  updateLead,
+  deleteLead,
+} from "../controller/leadController.js";
+import {
+  createTask,
+  deleteTask,
+  getTask,
+  getTasks,
+  updateTask,
+} from "../controller/taskController.js";
 
 const router = express.Router();
 
@@ -68,12 +75,18 @@ router.get("/displaycontacts/:id", VerifyUser, getContact);
 router.put("/update-contact/:id", VerifyUser, updateContact);
 router.delete("/displaycontacts/:id", VerifyUser, deleteContact);
 
-// product routes
-router.post("/products", VerifyUser, createProduct);
-router.get("/displayproducts", VerifyUser, getProducts);
-router.get("/displayproducts/:id", VerifyUser, getProduct);
-router.put("/update-products/:id", VerifyUser, updateProduct);
-router.delete("/displayproducts/:id", VerifyUser, deleteProduct);
+// lead routes
+router.post("/leads", VerifyUser, createLead);
+router.get("/displayleads", VerifyUser, getLeads);
+router.get("/displayleads/:id", VerifyUser, getLead);
+router.put("/update-lead/:id", VerifyUser, updateLead);
+router.delete("/displayleads/:id", VerifyUser, deleteLead);
+
+// task routes
+router.post("/tasks", VerifyUser, createTask);
+router.get("/displaytasks", VerifyUser, getTasks);
+router.get("/displaytasks/:id", VerifyUser, getTask);
+router.put("/update-task/:id", VerifyUser, updateTask);
+router.delete("/displaytasks/:id", VerifyUser, deleteTask);
 
 export { router as Router };
-
