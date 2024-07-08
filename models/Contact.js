@@ -3,24 +3,24 @@ import mongoose from "mongoose";
 const ContactSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   },
   department: {
     type: String,
-    require: true,
+    required: true,
   },
-  employees: {
-    type: Number,
-    require: true,
-  },
-  vendor: {
+  phoneNumber: {
     type: String,
-    require: true,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
   },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,

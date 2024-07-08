@@ -1,7 +1,7 @@
 import { ContactModel } from "../models/Contact.js";
 
 const createContact = async (req, res) => {
-  const { name, email, department, employees, vendor } = req.body;
+  const { name, email, department, phoneNumber, address } = req.body;
 
   console.log("Received request body:", req.body);
 
@@ -10,8 +10,8 @@ const createContact = async (req, res) => {
       name,
       email,
       department,
-      employees,
-      vendor,
+      phoneNumber,
+      address,
       postedBy: req.user._id,
     });
 
@@ -79,7 +79,7 @@ const deleteContact = async (req, res) => {
     }
     const deleteRecord = await ContactModel.findByIdAndDelete({ _id: id });
     const displayContacts = await ContactModel.find({ postedBy: req.user._id });
-    return res.status(200).json({ success: true, ...displayContacts._doc });
+    return res.status(200).json({ success: true, displayContacts });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

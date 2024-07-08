@@ -23,6 +23,13 @@ import {
   getTasks,
   updateTask,
 } from "../controller/taskController.js";
+import {
+  createDeal,
+  deleteDeal,
+  getDeal,
+  getDeals,
+  updateDeal,
+} from "../controller/dealController.js";
 
 const router = express.Router();
 
@@ -88,5 +95,12 @@ router.get("/displaytasks", VerifyUser, getTasks);
 router.get("/displaytasks/:id", VerifyUser, getTask);
 router.put("/update-task/:id", VerifyUser, updateTask);
 router.delete("/displaytasks/:id", VerifyUser, deleteTask);
+
+// Deal routes
+router.post("/deals", VerifyUser, createDeal);
+router.get("/displaydeals", VerifyUser, getDeals);
+router.get("/displaydeals/:id", VerifyUser, getDeal);
+router.put("/update-deal/:id", VerifyUser, updateDeal);
+router.delete("/displaydeals/:id", VerifyUser, deleteDeal);
 
 export { router as Router };
